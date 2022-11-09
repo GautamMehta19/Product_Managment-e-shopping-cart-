@@ -26,7 +26,7 @@ app.use(function (e, req, res, next) {
     next()
 })
 
-mongoose.connect("mongodb+srv://kaluram123:iKetOTUhK5vten7w@cluster0.4yhyg.mongodb.net/group44Database", {
+mongoose.connect("mongodb+srv://gautam:gautam123@cluster0.xorxp.mongodb.net/project_5_product_managment", {
 
 })
     .then(() => console.log("MongoDB is connected successfully.."))

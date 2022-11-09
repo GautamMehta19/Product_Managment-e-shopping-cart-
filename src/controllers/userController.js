@@ -27,7 +27,7 @@ const createUsers = async function (req, res) {
         if (!valid.isValid(fname)) {
             return res.status(400).send({ status: false, message: "fname field is mandatory" })
         }
-
+        
         //validate name
         if (!valid.nameValidationRegex(fname)) {
             return res.status(400).send({
@@ -35,7 +35,7 @@ const createUsers = async function (req, res) {
                 message: `fname contain only alphabets`
             })
         }
-
+        
         if (!valid.isValid(lname)) {
             return res.status(400).send({
                 status: false,
@@ -57,7 +57,7 @@ const createUsers = async function (req, res) {
                 msg: "email field is mandatory"
             });
         }
-
+        
         let checkEmail = await userModel.findOne({ email: email })
         if (checkEmail) {
             return res.status(400).send({
@@ -72,7 +72,7 @@ const createUsers = async function (req, res) {
                 msg: "Enter valid email"
             })
         }
-
+        
         let files = req.files
         if (!files || files.length == 0) return res.status(400).send({
             status: false, message: "user image is required and also insert user Image"
@@ -238,7 +238,7 @@ const createUsers = async function (req, res) {
         const salt = await bcrypt.genSalt(10);
         const hashedPass = await bcrypt.hash(password, salt)
         data.password = hashedPass;
-
+        
         const userCreated = await userModel.create(data)
 
         return res.status(201).send({
